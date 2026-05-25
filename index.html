@@ -882,7 +882,7 @@ async function handleSignIn() {
 
   // Check admin credentials
   const { data, error } = await sb.rpc('check_admin_login', { p_username: email, p_password: pass });
-  if (!error && data === true) {
+  if (!error && (data === true || data === 'true' || data == true)) {
     isAdmin = true;
     closeModal();
     document.getElementById('adminBar').style.display = 'flex';
