@@ -238,6 +238,14 @@ nav{position:sticky;top:0;z-index:1000;background:var(--white);border-bottom:2px
 .market-empty{text-align:center;padding:60px 0;}
 .market-empty .empty-icon{font-size:52px;margin-bottom:16px;}
 .market-empty p{color:var(--dark-gray);font-size:16px;}
+.market-region-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:8px;}
+.market-region-btn{background:var(--white);border:2px solid var(--mid-gray);padding:11px 22px;font-size:13px;font-weight:600;letter-spacing:.3px;color:var(--dark-gray);cursor:pointer;transition:all .2s;font-family:var(--font-body);}
+.market-region-btn:hover{border-color:var(--red);color:var(--red);}
+.market-region-btn.active{background:var(--red);border-color:var(--red);color:#fff;}
+.market-or-divider{text-align:center;color:#aaa;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;margin:20px 0;position:relative;}
+.market-or-divider::before,.market-or-divider::after{content:'';position:absolute;top:50%;width:30%;height:1px;background:var(--mid-gray);}
+.market-or-divider::before{left:0;}
+.market-or-divider::after{right:0;}
 
 /* REVIEWS */
 .reviews-section{padding:80px 0;}
@@ -763,10 +771,21 @@ footer{background:var(--black);color:#fff;padding:60px 0 0;}
   <div class="page-hero"><h1>Market Snapshot</h1><p>Current real estate conditions across Indiana — Spring 2026</p></div>
   <section class="market-section"><div class="container">
 
+    <!-- Region Buttons -->
+    <div style="text-align:center;margin-bottom:16px;">
+      <p style="font-size:11px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--dark-gray);margin-bottom:12px;">View by Region</p>
+      <div class="market-region-btns">
+        <button class="market-region-btn" id="regionBtn_central" onclick="selectRegion('region_central')">Central Indiana</button>
+        <button class="market-region-btn" id="regionBtn_north" onclick="selectRegion('region_north')">Northern Indiana</button>
+        <button class="market-region-btn" id="regionBtn_south" onclick="selectRegion('region_south')">Southern &amp; Western Indiana</button>
+      </div>
+    </div>
+    <div class="market-or-divider">or select a specific city</div>
+
     <!-- City Selector -->
     <div class="market-city-wrap">
       <label for="marketCitySelect">Select a City</label>
-      <select id="marketCitySelect" class="market-city-select" onchange="loadMarketSnapshot(this.value)">
+      <select id="marketCitySelect" class="market-city-select" onchange="selectCity(this.value)">
         <option value="">— Choose a city —</option>
         <optgroup label="Central Indiana">
           <option value="Indianapolis">Indianapolis</option>
@@ -1287,7 +1306,12 @@ function calcMortgage() {
 }
 
 // MARKET SNAPSHOT DATA
+const REGION_KEYS = ['region_central','region_north','region_south'];
 const INDIANA_MARKETS = {
+  // ── Regional overviews (averaged across member cities) ──
+  'region_central': { name:'Central Indiana', price:'$307K', days:15, ratio:'98.2%', inventory:'1.3mo', trend:'seller',   desc:"Central Indiana is a strong seller's market driven by Hamilton County's top-ranked suburbs and Indianapolis's growing economy. Expect low inventory, fast-moving homes, and competitive multi-offer situations throughout the region." },
+  'region_north':   { name:'Northern Indiana', price:'$198K', days:23, ratio:'97.0%', inventory:'2.2mo', trend:'balanced', desc:"Northern Indiana offers more affordable options with a balanced-to-buyer-friendly market. Fort Wayne provides the strongest demand while smaller markets like Kokomo and Elkhart give buyers more time and negotiating leverage." },
+  'region_south':   { name:'Southern & Western Indiana', price:'$207K', days:25, ratio:'96.7%', inventory:'2.4mo', trend:'balanced', desc:"Southern and Western Indiana features diverse conditions — from Bloomington's university-driven seller market to buyer-favorable pricing in Terre Haute and Muncie. Affordability and quality of life are the region's strongest draws." },
   'Indianapolis':  { price:'$285K', days:18, ratio:'97.8%', inventory:'1.8mo', trend:'seller',   desc:"Indianapolis remains a competitive seller's market with diverse neighborhoods from Broad Ripple to Irvington. Homes under $300K often attract multiple offers within the first weekend on the market." },
   'Carmel':        { price:'$492K', days:11, ratio:'99.2%', inventory:'0.9mo', trend:'seller',   desc:"Carmel consistently ranks among Indiana's most desirable cities, fueled by top-rated schools, walkable amenities, and Arts & Design District appeal. Homes frequently sell at or above asking price." },
   'Fishers':       { price:'$368K', days:13, ratio:'98.9%', inventory:'1.0mo', trend:'seller',   desc:"Fishers combines suburban convenience with a thriving downtown scene and strong job market. Low inventory and high demand make it one of Central Indiana's fastest-moving markets." },
@@ -1313,24 +1337,34 @@ const INDIANA_MARKETS = {
   'Anderson':      { price:'$172K', days:27, ratio:'96.3%', inventory:'2.7mo', trend:'buyer',    desc:"Anderson in Madison County offers highly affordable housing with easy I-69 access to Indianapolis. Buyers will find extended days on market and motivated sellers willing to negotiate." },
 };
 
-function loadMarketSnapshot(city) {
+function selectRegion(key) {
+  document.getElementById('marketCitySelect').value = '';
+  REGION_KEYS.forEach(k => document.getElementById('regionBtn_' + k.replace('region_','')).classList.remove('active'));
+  document.getElementById('regionBtn_' + key.replace('region_','')).classList.add('active');
+  loadMarketSnapshot(key);
+}
+function selectCity(city) {
+  REGION_KEYS.forEach(k => document.getElementById('regionBtn_' + k.replace('region_','')).classList.remove('active'));
+  loadMarketSnapshot(city);
+}
+function loadMarketSnapshot(key) {
   const snap  = document.getElementById('marketSnapshot');
   const empty = document.getElementById('marketEmpty');
-  if (!city || !INDIANA_MARKETS[city]) {
+  if (!key || !INDIANA_MARKETS[key]) {
     snap.style.display  = 'none';
     empty.style.display = 'block';
     return;
   }
-  const d = INDIANA_MARKETS[city];
-  document.getElementById('mCityTitle').textContent   = city + ', Indiana';
-  document.getElementById('mPrice').textContent       = d.price;
-  document.getElementById('mDays').textContent        = d.days;
-  document.getElementById('mRatio').textContent       = d.ratio;
-  document.getElementById('mInventory').textContent   = d.inventory;
-  document.getElementById('mDesc').textContent        = d.desc;
+  const d = INDIANA_MARKETS[key];
+  document.getElementById('mCityTitle').textContent = d.name || (key + ', Indiana');
+  document.getElementById('mPrice').textContent     = d.price;
+  document.getElementById('mDays').textContent      = d.days;
+  document.getElementById('mRatio').textContent     = d.ratio;
+  document.getElementById('mInventory').textContent = d.inventory;
+  document.getElementById('mDesc').textContent      = d.desc;
   const badge = document.getElementById('mTrendBadge');
-  badge.textContent  = d.trend === 'seller' ? "Seller's Market" : d.trend === 'buyer' ? "Buyer's Market" : "Balanced Market";
-  badge.className    = 'market-trend-badge trend-' + d.trend;
+  badge.textContent = d.trend === 'seller' ? "Seller's Market" : d.trend === 'buyer' ? "Buyer's Market" : "Balanced Market";
+  badge.className   = 'market-trend-badge trend-' + d.trend;
   snap.style.display  = 'block';
   empty.style.display = 'none';
 }
