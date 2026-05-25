@@ -406,7 +406,6 @@ footer{background:var(--black);color:#fff;padding:60px 0 0;}
       <li class="has-dropdown"><span>Meet the Team ▾</span>
         <div class="dropdown">
           <a href="#" onclick="showPage('about')">About Us</a>
-          <a href="#" onclick="showPage('agents')">Our Agents</a>
           <a href="#" onclick="showPage('contact')">Contact Us</a>
           <a href="#" onclick="showPage('reviews')">Reviews</a>
         </div>
@@ -728,6 +727,17 @@ footer{background:var(--black);color:#fff;padding:60px 0 0;}
       </div>
     </div>
   </div></div></section>
+
+  <!-- Meet the Team -->
+  <section class="agents-section" style="background:var(--off-white);border-top:1px solid var(--mid-gray);">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:40px;">
+        <div class="section-title">Meet Our Agents</div>
+        <p class="section-sub" style="margin:0;">Nurse-trained real estate professionals dedicated to your goals</p>
+      </div>
+      <div class="agents-grid" id="agentsGrid"><div style="text-align:center;padding:60px;color:#999;grid-column:1/-1;">Loading agents...</div></div>
+    </div>
+  </section>
 </div>
 
 <!-- CONTACT PAGE -->
@@ -994,7 +1004,7 @@ footer{background:var(--black);color:#fff;padding:60px 0 0;}
       </div>
       <div class="footer-col"><h4>Buy</h4><ul><li><a href="#" onclick="showPage('listings')">All Listings</a></li><li><a href="#" onclick="showPage('featured')">Featured Listings</a></li><li><a href="#" onclick="showPage('sold')">Sold Listings</a></li></ul></div>
       <div class="footer-col"><h4>Sell</h4><ul><li><a href="#" onclick="showPage('sell')">Sell My Home</a></li><li><a href="#" onclick="showPage('valuation')">Home Valuation</a></li></ul></div>
-      <div class="footer-col"><h4>Company</h4><ul><li><a href="#" onclick="showPage('about')">About Us</a></li><li><a href="#" onclick="showPage('agents')">Our Agents</a></li><li><a href="#" onclick="showPage('contact')">Contact Us</a></li><li><a href="#" onclick="showPage('reviews')">Reviews</a></li><li><a href="#" onclick="showPage('market')">Market Snapshot</a></li><li><a href="#" onclick="showPage('mortgage')">Mortgage Calculator</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="#" onclick="showPage('about')">About Us</a></li><li><a href="#" onclick="showPage('contact')">Contact Us</a></li><li><a href="#" onclick="showPage('reviews')">Reviews</a></li><li><a href="#" onclick="showPage('market')">Market Snapshot</a></li><li><a href="#" onclick="showPage('mortgage')">Mortgage Calculator</a></li></ul></div>
     </div>
     <div class="footer-bottom">
       <div>© 2026 RN Real Estate. All Rights Reserved. | <a href="#">Terms & Privacy</a> | <a href="#">Cookie Policy</a></div>
@@ -1017,7 +1027,7 @@ function showPage(page) {
   const el = document.getElementById('page-' + page);
   if (el) el.classList.add('active');
   window.scrollTo(0, 0);
-  if (page === 'agents') loadAgents();
+  if (page === 'about') loadAgents();
   if (page === 'reviews') loadReviews();
 }
 
