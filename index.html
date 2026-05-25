@@ -184,10 +184,24 @@ nav{position:sticky;top:0;z-index:1000;background:var(--white);border-bottom:2px
 .calc-field label{display:block;font-size:12px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:var(--dark-gray);margin-bottom:6px;}
 .calc-field input{width:100%;border:1px solid var(--mid-gray);padding:12px 14px;font-size:15px;font-family:var(--font-body);}
 .calc-field input:focus{outline:2px solid var(--red);border-color:var(--red);}
+.calc-field select{width:100%;border:1px solid var(--mid-gray);padding:12px 14px;font-size:15px;font-family:var(--font-body);background:var(--white);color:var(--black);appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23555' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;}
+.calc-field select:focus{outline:2px solid var(--red);border-color:var(--red);}
+.calc-input-wrap{position:relative;}
+.calc-prefix{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:15px;color:var(--dark-gray);pointer-events:none;line-height:1;}
+.calc-suffix{position:absolute;right:13px;top:50%;transform:translateY(-50%);font-size:15px;color:var(--dark-gray);pointer-events:none;line-height:1;}
+.calc-input-wrap input.has-prefix{padding-left:26px;}
+.calc-input-wrap input.has-suffix{padding-right:30px;}
+.calc-toggle{display:flex;margin-bottom:7px;}
+.calc-toggle-btn{flex:1;background:var(--light-gray);border:1px solid var(--mid-gray);padding:5px 0;font-size:12px;font-weight:600;cursor:pointer;color:var(--dark-gray);transition:all .15s;font-family:var(--font-body);}
+.calc-toggle-btn:first-child{border-radius:3px 0 0 3px;}
+.calc-toggle-btn:last-child{border-radius:0 3px 3px 0;border-left:none;}
+.calc-toggle-btn.active{background:var(--red);color:#fff;border-color:var(--red);}
 .calc-result{background:var(--red);color:#fff;padding:28px;text-align:center;margin-top:8px;}
 .calc-result-label{font-size:13px;letter-spacing:1px;text-transform:uppercase;opacity:.85;margin-bottom:8px;}
 .calc-result-amount{font-family:var(--font-display);font-size:42px;font-weight:700;}
-.calc-result-sub{font-size:13px;opacity:.8;margin-top:6px;}
+.calc-breakdown{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:10px;font-size:13px;opacity:.85;}
+.calc-breakdown span{white-space:nowrap;}
+.calc-result-sub{font-size:13px;opacity:.75;margin-top:8px;}
 
 /* CONTACT / SELL */
 .contact-section{padding:80px 0;}
@@ -754,15 +768,80 @@ footer{background:var(--black);color:#fff;padding:60px 0 0;}
   <div class="page-hero"><h1>Mortgage Calculator</h1><p>Estimate your monthly payment</p></div>
   <section class="mortgage-section"><div class="container"><div class="calc-wrap">
     <div class="calc-grid">
-      <div class="calc-field"><label>Home Price</label><input type="number" id="cPrice" value="350000" oninput="calcMortgage()"></div>
-      <div class="calc-field"><label>Down Payment ($)</label><input type="number" id="cDown" value="70000" oninput="calcMortgage()"></div>
-      <div class="calc-field"><label>Interest Rate (%)</label><input type="number" id="cRate" value="7.0" step="0.1" oninput="calcMortgage()"></div>
-      <div class="calc-field"><label>Loan Term (years)</label><input type="number" id="cTerm" value="30" oninput="calcMortgage()"></div>
+
+      <!-- Home Price -->
+      <div class="calc-field">
+        <label>Home Price</label>
+        <div class="calc-input-wrap">
+          <span class="calc-prefix">$</span>
+          <input type="text" id="cPrice" class="has-prefix" value="350,000" oninput="fmtDollar(this);calcMortgage()">
+        </div>
+      </div>
+
+      <!-- Down Payment -->
+      <div class="calc-field">
+        <label>Down Payment</label>
+        <div class="calc-toggle">
+          <button class="calc-toggle-btn active" id="downBtnDollar" onclick="setDownMode('dollar')">$ Amount</button>
+          <button class="calc-toggle-btn" id="downBtnPct" onclick="setDownMode('pct')">% of Price</button>
+        </div>
+        <div class="calc-input-wrap" id="downDollarWrap">
+          <span class="calc-prefix">$</span>
+          <input type="text" id="cDown" class="has-prefix" value="70,000" oninput="fmtDollar(this);calcMortgage()">
+        </div>
+        <div class="calc-input-wrap" id="downPctWrap" style="display:none;">
+          <input type="text" id="cDownPct" class="has-suffix" value="20" oninput="fmtDecimal(this);calcMortgage()">
+          <span class="calc-suffix">%</span>
+        </div>
+      </div>
+
+      <!-- Interest Rate -->
+      <div class="calc-field">
+        <label>Interest Rate</label>
+        <div class="calc-input-wrap">
+          <input type="text" id="cRate" class="has-suffix" value="7.0" oninput="fmtDecimal(this);calcMortgage()">
+          <span class="calc-suffix">%</span>
+        </div>
+      </div>
+
+      <!-- Loan Term -->
+      <div class="calc-field">
+        <label>Loan Term</label>
+        <select id="cTerm" onchange="calcMortgage()">
+          <option value="10">10-Year Fixed</option>
+          <option value="15">15-Year Fixed</option>
+          <option value="20">20-Year Fixed</option>
+          <option value="25">25-Year Fixed</option>
+          <option value="30" selected>30-Year Fixed</option>
+          <option value="40">40-Year Fixed</option>
+        </select>
+      </div>
+
+      <!-- Property Tax -->
+      <div class="calc-field">
+        <label>Property Tax</label>
+        <div class="calc-toggle">
+          <button class="calc-toggle-btn active" id="taxBtnDollar" onclick="setTaxMode('dollar')">$/Year</button>
+          <button class="calc-toggle-btn" id="taxBtnPct" onclick="setTaxMode('pct')">% of Price</button>
+        </div>
+        <div class="calc-input-wrap" id="taxDollarWrap">
+          <span class="calc-prefix">$</span>
+          <input type="text" id="cTax" class="has-prefix" value="3,500" oninput="fmtDollar(this);calcMortgage()">
+        </div>
+        <div class="calc-input-wrap" id="taxPctWrap" style="display:none;">
+          <input type="text" id="cTaxPct" class="has-suffix" value="1.0" oninput="fmtDecimal(this);calcMortgage()">
+          <span class="calc-suffix">%</span>
+        </div>
+      </div>
+
     </div>
     <div class="calc-result">
-      <div class="calc-result-label">Estimated Monthly Payment</div>
-      <div class="calc-result-amount" id="calcResult">$1,862</div>
-      <div class="calc-result-sub">Principal & Interest only. Does not include taxes, insurance, or HOA.</div>
+      <div class="calc-result-label">Total Estimated Monthly Payment</div>
+      <div class="calc-result-amount" id="calcResult">$2,155</div>
+      <div class="calc-breakdown" id="calcBreakdown">
+        <span>P&amp;I: $1,863</span><span>Tax: $292/mo</span>
+      </div>
+      <div class="calc-result-sub">Estimate only. Does not include insurance or HOA.</div>
     </div>
     <div style="margin-top:24px;text-align:center;"><button class="btn-primary" onclick="showPage('contact')">Talk to a Lender</button></div>
   </div></div></section>
@@ -1084,13 +1163,62 @@ async function deleteBlogPost(id) {
 }
 
 // MORTGAGE CALCULATOR
+let downMode = 'dollar', taxMode = 'dollar';
+
+function rawNum(id) {
+  return parseFloat((document.getElementById(id).value || '').replace(/,/g, '')) || 0;
+}
+function fmtDollar(el) {
+  const pos = el.selectionStart;
+  const before = (el.value.slice(0, pos).replace(/,/g, '')).length;
+  const raw = el.value.replace(/[^0-9]/g, '');
+  el.value = raw ? parseInt(raw, 10).toLocaleString() : '';
+  // restore cursor roughly
+  let cnt = 0, newPos = 0;
+  for (let i = 0; i < el.value.length; i++) {
+    if (el.value[i] !== ',') cnt++;
+    if (cnt === before) { newPos = i + 1; break; }
+  }
+  try { el.setSelectionRange(newPos, newPos); } catch(e) {}
+}
+function fmtDecimal(el) {
+  el.value = el.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+}
+
+function setDownMode(mode) {
+  downMode = mode;
+  document.getElementById('downDollarWrap').style.display = mode === 'dollar' ? '' : 'none';
+  document.getElementById('downPctWrap').style.display   = mode === 'pct'    ? '' : 'none';
+  document.getElementById('downBtnDollar').classList.toggle('active', mode === 'dollar');
+  document.getElementById('downBtnPct').classList.toggle('active',    mode === 'pct');
+  calcMortgage();
+}
+function setTaxMode(mode) {
+  taxMode = mode;
+  document.getElementById('taxDollarWrap').style.display = mode === 'dollar' ? '' : 'none';
+  document.getElementById('taxPctWrap').style.display    = mode === 'pct'    ? '' : 'none';
+  document.getElementById('taxBtnDollar').classList.toggle('active', mode === 'dollar');
+  document.getElementById('taxBtnPct').classList.toggle('active',    mode === 'pct');
+  calcMortgage();
+}
+
 function calcMortgage() {
-  const P = parseFloat(document.getElementById('cPrice').value) - parseFloat(document.getElementById('cDown').value);
-  const r = parseFloat(document.getElementById('cRate').value) / 100 / 12;
-  const n = parseFloat(document.getElementById('cTerm').value) * 12;
+  const price = rawNum('cPrice');
+  const down  = downMode === 'dollar'
+    ? rawNum('cDown')
+    : price * (parseFloat(document.getElementById('cDownPct').value) || 0) / 100;
+  const P = price - down;
+  const r = (parseFloat(document.getElementById('cRate').value) || 0) / 100 / 12;
+  const n = parseInt(document.getElementById('cTerm').value) * 12;
   if (P <= 0 || r <= 0 || n <= 0) return;
-  const m = P * (r * Math.pow(1+r,n)) / (Math.pow(1+r,n) - 1);
-  document.getElementById('calcResult').textContent = '$' + Math.round(m).toLocaleString();
+  const pi = P * (r * Math.pow(1+r,n)) / (Math.pow(1+r,n) - 1);
+  const monthlyTax = taxMode === 'dollar'
+    ? rawNum('cTax') / 12
+    : price * (parseFloat(document.getElementById('cTaxPct').value) || 0) / 100 / 12;
+  const total = pi + monthlyTax;
+  document.getElementById('calcResult').textContent = '$' + Math.round(total).toLocaleString();
+  document.getElementById('calcBreakdown').innerHTML =
+    `<span>P&amp;I: $${Math.round(pi).toLocaleString()}</span><span>Tax: $${Math.round(monthlyTax).toLocaleString()}/mo</span>`;
 }
 
 // Close modal on overlay click
