@@ -1395,15 +1395,10 @@ function calcHeroSavings() {
   if (!price) { result.innerHTML = ''; return; }
   const heroFee = price * 0.02;
   const stdFee = price * 0.03;
-  const tradFee = price * 0.03;
-  const savings = tradFee - heroFee;
+  const savings = stdFee - heroFee;
   const fmt = v => '$' + Math.round(v).toLocaleString();
   result.innerHTML = `
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;">
-      <div style="text-align:center;padding:16px;background:#f5f5f5;border:1px solid var(--mid-gray);">
-        <div style="font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#999;margin-bottom:4px;">Traditional 3%</div>
-        <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#aaa;">${fmt(tradFee)}</div>
-      </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px;">
       <div style="text-align:center;padding:16px;background:#f5f5f5;border:1px solid var(--mid-gray);">
         <div style="font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#999;margin-bottom:4px;">Our Standard 3%</div>
         <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--dark-gray);">${fmt(stdFee)}</div>
@@ -1414,7 +1409,7 @@ function calcHeroSavings() {
       </div>
     </div>
     <div style="background:var(--red);color:#fff;padding:18px;text-align:center;">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;opacity:.85;margin-bottom:4px;">You save vs. traditional 3% commission</div>
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;opacity:.85;margin-bottom:4px;">You save vs. our standard 3% commission</div>
       <div style="font-family:var(--font-display);font-size:34px;font-weight:700;">${fmt(savings)}</div>
     </div>
   `;
