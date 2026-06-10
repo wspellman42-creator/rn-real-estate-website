@@ -157,6 +157,99 @@ nav{position:sticky;top:0;z-index:1000;background:var(--white);border-bottom:2px
 .agent-contact a{font-size:13px;color:var(--dark-gray);display:flex;align-items:center;gap:6px;}
 .agent-contact a:hover{color:var(--red);}
 
+/* AGENT PROFILE PAGE */
+.agent-profile-grid{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:start;}
+.agent-profile-sidebar{position:sticky;top:calc(var(--nav-h) + 24px);}
+.agent-profile-photo{width:100%;aspect-ratio:1/1;overflow:hidden;margin-bottom:0;}
+.agent-profile-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.agent-profile-meta{background:var(--off-white);border:1px solid var(--mid-gray);padding:24px;}
+.agent-profile-meta .agent-name{font-family:var(--font-display);font-size:24px;font-weight:700;margin-bottom:4px;}
+.agent-profile-meta .agent-title-label{font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--red);margin-bottom:20px;}
+.agent-profile-contact-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--mid-gray);font-size:14px;color:var(--dark-gray);}
+.agent-profile-contact-item:last-child{border-bottom:none;}
+.agent-profile-contact-item a{color:var(--black);transition:color .2s;}
+.agent-profile-contact-item a:hover{color:var(--red);}
+.agent-profile-contact-icon{color:var(--red);font-size:16px;flex-shrink:0;}
+.agent-profile-bio{font-size:15px;color:var(--dark-gray);line-height:1.85;margin-bottom:40px;white-space:pre-wrap;}
+.agent-profile-form{background:var(--off-white);border:1px solid var(--mid-gray);padding:32px;}
+.agent-profile-form h3{font-family:var(--font-display);font-size:20px;font-weight:700;margin-bottom:20px;}
+@media(max-width:900px){.agent-profile-grid{grid-template-columns:1fr;}.agent-profile-sidebar{position:static;}}
+.social-icon-link{display:inline-flex;align-items:center;transition:color .2s;}
+
+/* HERO RATE LINE */
+.hero-rate-line{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:10px 18px;margin-bottom:32px;font-size:15px;color:#fff;font-weight:500;flex-wrap:wrap;}
+.hero-rate-line strong{color:#fde68a;font-weight:700;}
+
+/* AWARDS HIGHLIGHT */
+.award-highlight{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);padding:6px 14px;}
+.award-highlight .award-text{font-weight:700;}
+
+/* RATE CALLOUT SECTION */
+.rate-section{padding:80px 0;background:var(--black);}
+.rate-eyebrow{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);margin-bottom:12px;}
+.rate-headline{font-family:var(--font-display);font-size:clamp(28px,4vw,44px);font-weight:700;color:#fff;line-height:1.15;margin-bottom:16px;}
+.rate-headline em{font-style:normal;color:#fde68a;}
+.rate-sub{font-size:16px;color:rgba(255,255,255,.65);max-width:520px;margin-bottom:40px;line-height:1.7;}
+.rate-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:700px;}
+.rate-card{padding:32px 28px;border:1px solid rgba(255,255,255,.15);}
+.rate-card.rate-standard{background:rgba(255,255,255,.06);}
+.rate-card.rate-heroes{background:var(--red);border-color:var(--red);}
+.rate-card-badge{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px;}
+.rate-card.rate-heroes .rate-card-badge{color:rgba(255,255,255,.85);}
+.rate-number{font-family:var(--font-display);font-size:52px;font-weight:700;color:#fff;line-height:1;margin-bottom:6px;}
+.rate-desc{font-size:13px;color:rgba(255,255,255,.65);line-height:1.65;}
+.rate-card.rate-heroes .rate-desc{color:rgba(255,255,255,.85);}
+.rate-card-qualifies{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.2);font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;}
+.rate-card.rate-heroes .rate-card-qualifies{color:rgba(255,255,255,.8);}
+.rate-card-qualifies strong{display:block;font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:5px;color:rgba(255,255,255,.75);}
+.rate-card.rate-heroes .rate-card-qualifies strong{color:#fff;}
+.rate-cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;}
+.rate-cta .btn-outline-white{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4);padding:10px 26px;font-size:14px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;font-family:var(--font-body);}
+.rate-cta .btn-outline-white:hover{background:rgba(255,255,255,.1);border-color:#fff;}
+
+/* ABOUT PAGE RATES */
+.our-rates-section{padding:80px 0;background:var(--off-white);}
+.rates-compare{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--mid-gray);margin-top:48px;}
+.rates-col{padding:40px 36px;}
+.rates-col-standard{background:#fff;border-right:1px solid var(--mid-gray);}
+.rates-col-heroes{background:var(--red);}
+.rates-col-eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.rates-col-standard .rates-col-eyebrow{color:var(--dark-gray);}
+.rates-col-heroes .rates-col-eyebrow{color:rgba(255,255,255,.75);}
+.rates-col-pct{font-family:var(--font-display);font-size:72px;font-weight:700;line-height:1;margin-bottom:8px;}
+.rates-col-standard .rates-col-pct{color:var(--red);}
+.rates-col-heroes .rates-col-pct{color:#fff;}
+.rates-col-title{font-family:var(--font-display);font-size:22px;font-weight:700;margin-bottom:12px;}
+.rates-col-standard .rates-col-title{color:var(--black);}
+.rates-col-heroes .rates-col-title{color:#fff;}
+.rates-col-desc{font-size:15px;line-height:1.7;margin-bottom:20px;}
+.rates-col-standard .rates-col-desc{color:var(--dark-gray);}
+.rates-col-heroes .rates-col-desc{color:rgba(255,255,255,.85);}
+.rates-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.rates-list li{font-size:14px;display:flex;align-items:flex-start;gap:8px;}
+.rates-col-standard .rates-list li{color:var(--dark-gray);}
+.rates-col-heroes .rates-list li{color:rgba(255,255,255,.9);}
+
+/* MISSION TIE-IN */
+.mission-rate-callout{margin-top:24px;padding:20px 24px;background:var(--light-gray);border-left:4px solid var(--red);}
+.mission-rate-callout p{font-size:15px;color:var(--dark-gray);line-height:1.75;font-style:italic;}
+.mission-rate-callout strong{color:var(--black);font-style:normal;}
+
+/* WHO QUALIFIES BOX */
+.qualifies-box{margin-top:48px;border:1px solid var(--mid-gray);overflow:hidden;}
+.qualifies-box-header{background:var(--red);padding:16px 24px;display:flex;align-items:center;gap:12px;}
+.qualifies-box-header h3{font-family:var(--font-display);font-size:18px;font-weight:700;color:#fff;margin:0;}
+.qualifies-box-body{padding:28px 24px;background:#fff;}
+.qualifies-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.qualifies-item{display:flex;flex-direction:column;align-items:center;text-align:center;padding:20px 12px;border:1px solid var(--mid-gray);}
+.qualifies-item-icon{font-size:28px;margin-bottom:10px;}
+.qualifies-item-label{font-size:13px;font-weight:600;color:var(--black);margin-bottom:4px;}
+.qualifies-item-sub{font-size:12px;color:var(--dark-gray);line-height:1.4;}
+.qualifies-footer{padding:14px 24px;background:var(--off-white);border-top:1px solid var(--mid-gray);font-size:13px;color:var(--dark-gray);text-align:center;}
+.qualifies-footer button{background:none;border:none;color:var(--red);font-weight:600;cursor:pointer;font-family:var(--font-body);font-size:13px;padding:0;}
+@media(max-width:900px){.rate-cards,.rates-compare{grid-template-columns:1fr;}.rates-col-standard{border-right:none;border-bottom:1px solid var(--mid-gray);}.qualifies-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.qualifies-grid{grid-template-columns:1fr;}}
+
 /* TESTIMONIALS */
 .testimonials{padding:80px 0;background:var(--off-white);}
 .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
@@ -410,6 +503,7 @@ footer{background:var(--black);color:#fff;padding:60px 0 0;}
           <a href="#" onclick="showPage('reviews')">Reviews</a>
         </div>
       </li>
+      <li><a href="#" onclick="showPage('heroes-rate')" style="color:var(--red);font-weight:700;">Heroes Rate</a></li>
       <li><a href="#" onclick="showPage('market')">Market Snapshot</a></li>
       <li><a href="#" onclick="showPage('mortgage')">Mortgage Calculator</a></li>
       <li><a href="#" onclick="showPage('valuation')">Home Valuation</a></li>
@@ -454,7 +548,28 @@ footer{background:var(--black);color:#fff;padding:60px 0 0;}
           <div class="form-group"><label>License #</label><input id="aLicense" placeholder="RB12345678"></div>
           <div class="form-group"><label>Specialty / Area</label><input id="aSpecialty" placeholder="First-Time Buyers"></div>
         </div>
-        <div class="form-group" style="margin-bottom:16px;"><label>Photo URL (optional)</label><input id="aPhoto" placeholder="https://..."></div>
+        <div class="form-group" style="margin-bottom:16px;">
+          <label>Agent Photo</label>
+          <div style="display:flex;gap:12px;align-items:flex-start;margin-top:6px;">
+            <div style="width:76px;height:76px;border:1px solid var(--mid-gray);flex-shrink:0;overflow:hidden;background:var(--light-gray);display:flex;align-items:center;justify-content:center;">
+              <img id="aPhotoPreviewImg" style="width:100%;height:100%;object-fit:cover;display:none;">
+              <svg id="aPhotoPreviewPlaceholder" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M6 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
+              <input id="aPhoto" placeholder="Paste a URL, or use Upload Photo below" oninput="previewPhotoUrl(this.value)">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <label for="aPhotoFile" style="background:var(--red);color:#fff;padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer;letter-spacing:.3px;text-transform:uppercase;white-space:nowrap;flex-shrink:0;">Upload Photo</label>
+                <input type="file" id="aPhotoFile" accept="image/*" style="display:none;" onchange="handlePhotoUpload(this)">
+                <span id="aPhotoUploadStatus" style="font-size:12px;color:var(--dark-gray);"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="admin-form-grid" style="margin-bottom:16px;">
+          <div class="form-group"><label>Instagram URL</label><input id="aInstagram" placeholder="https://instagram.com/..."></div>
+          <div class="form-group"><label>Facebook URL</label><input id="aFacebook" placeholder="https://facebook.com/..."></div>
+          <div class="form-group"><label>LinkedIn URL</label><input id="aLinkedIn" placeholder="https://linkedin.com/in/..."></div>
+        </div>
         <div class="form-group" style="margin-bottom:20px;"><label>Bio</label><textarea id="aBio" rows="3" style="border:1px solid var(--mid-gray);padding:12px;font-family:var(--font-body);font-size:15px;width:100%;" placeholder="Brief bio..."></textarea></div>
         <div style="display:flex;gap:12px;">
           <button class="btn-primary" onclick="saveAgent()">Save Agent</button>
@@ -472,7 +587,13 @@ footer{background:var(--black);color:#fff;padding:60px 0 0;}
           <div class="form-group"><label>Client Name *</label><input id="tName" placeholder="John & Jane Doe"></div>
           <div class="form-group"><label>Rating (1-5)</label><input id="tRating" type="number" min="1" max="5" value="5"></div>
         </div>
-        <div class="form-group" style="margin-bottom:20px;"><label>Review</label><textarea id="tContent" rows="3" style="border:1px solid var(--mid-gray);padding:12px;font-family:var(--font-body);font-size:15px;width:100%;"></textarea></div>
+        <div class="form-group" style="margin-bottom:16px;"><label>Review</label><textarea id="tContent" rows="3" style="border:1px solid var(--mid-gray);padding:12px;font-family:var(--font-body);font-size:15px;width:100%;"></textarea></div>
+        <div class="form-group" style="margin-bottom:20px;">
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:600;">
+            <input type="checkbox" id="tHeroClient" style="width:16px;height:16px;accent-color:var(--red);">
+            Heroes Rate Client <span style="color:var(--dark-gray);font-size:13px;font-weight:400;">(qualifies for 2% program)</span>
+          </label>
+        </div>
         <button class="btn-primary" onclick="saveTestimonial()">Add Testimonial</button>
       </div>
       <div id="testimonialTableWrap"></div>
@@ -506,7 +627,10 @@ footer{background:var(--black);color:#fff;padding:60px 0 0;}
     <div class="hero-content">
       <div class="hero-eyebrow">Central Indiana's Premier Real Estate Team</div>
       <h1 class="hero-title">Find Your Dream Home<br>with <span>Care & Precision</span></h1>
-      <p class="hero-sub">Nurse-led real estate expertise — detail-oriented, empathetic, and calm under pressure. We bring healthcare values to every transaction.</p>
+      <p class="hero-sub" style="margin-bottom:14px;">Nurse-led real estate expertise — detail-oriented, empathetic, and calm under pressure. We bring healthcare values to every transaction.</p>
+      <div class="hero-rate-line">
+        🏡 Full-service listing at <strong>3%</strong> &nbsp;·&nbsp; <strong>2% for Healthcare, Educators & Military</strong>
+      </div>
       <div class="hero-ctas">
         <button class="btn-primary" onclick="showPage('listings')">Browse Listings</button>
         <button class="btn-outline" onclick="showPage('contact')">Contact Us</button>
@@ -553,8 +677,42 @@ footer{background:var(--black);color:#fff;padding:60px 0 0;}
       <div class="award-item"><span class="award-icon">🏥</span><span class="award-text">Healthcare Values in Every Transaction</span></div>
       <div class="award-item"><span class="award-icon">🏡</span><span class="award-text">Serving All of Central Indiana</span></div>
       <div class="award-item"><span class="award-icon">✦</span><span class="award-text">5-Star Rated on Google</span></div>
+      <div class="award-item award-highlight"><span class="award-icon">💰</span><span class="award-text">List for as Low as 2% Commission</span></div>
     </div>
   </div>
+
+  <!-- Rate Callout -->
+  <section class="rate-section">
+    <div class="container">
+      <div class="rate-eyebrow">Our Commission Rates</div>
+      <h2 class="rate-headline">Quality Service<br>Shouldn't Cost <em>More</em></h2>
+      <p class="rate-sub">We believe you deserve exceptional marketing, professional photography, and aggressive negotiation — without the traditional 3% price tag.</p>
+      <div class="rate-cards">
+        <div class="rate-card rate-standard">
+          <div class="rate-card-badge">Standard</div>
+          <div class="rate-number">3%</div>
+          <p class="rate-desc">Full-service listing for any seller. Professional staging consult, drone photography, MLS exposure, and expert negotiation included.</p>
+          <div class="rate-card-qualifies">
+            <strong>What's Included</strong>
+            MLS listing · Drone photography · Digital & print marketing · Open houses · Expert contract negotiation
+          </div>
+        </div>
+        <div class="rate-card rate-heroes">
+          <div class="rate-card-badge">Heroes Rate</div>
+          <div class="rate-number">2%</div>
+          <p class="rate-desc">Our way of giving back to the people who give so much. Every service included — for less.</p>
+          <div class="rate-card-qualifies">
+            <strong>Who Qualifies</strong>
+            Healthcare Workers · Teachers & Educators · Active Military & Veterans · First Responders
+          </div>
+        </div>
+      </div>
+      <div class="rate-cta">
+        <button class="btn-primary" onclick="showPage('sell')">Get a Free Home Evaluation</button>
+        <button class="btn-outline-white" onclick="showPage('heroes-rate')">Learn More</button>
+      </div>
+    </div>
+  </section>
 
   <!-- Making a Difference -->
   <section class="making-diff">
@@ -605,8 +763,8 @@ footer{background:var(--black);color:#fff;padding:60px 0 0;}
       <p class="section-sub">Our top priority is you. We strive to exceed your expectations every time.</p>
       <div class="services-grid" style="text-align:left;margin-top:40px;">
         <div class="service-card"><div class="service-icon">🏠</div><h3>Buy a Home</h3><p>Our buyer's agents guide you through every step — from search to closing — with nurse-like thoroughness and care.</p></div>
-        <div class="service-card"><div class="service-icon">📋</div><h3>Sell Your Home</h3><p>Professional staging, drone photography, and aggressive marketing to get you top dollar in the least time.</p></div>
-        <div class="service-card"><div class="service-icon">🔨</div><h3>Build Your Dream</h3><p>New construction guidance from lot selection to final walkthrough. We know what to look for before you sign.</p></div>
+        <div class="service-card"><div class="service-icon">📋</div><h3>Sell Your Home</h3><p>Professional staging, drone photography, and aggressive marketing to get you top dollar in the least amount of time.</p></div>
+        <div class="service-card"><div class="service-icon">💰</div><h3>Industry-Leading Low Rates</h3><p>We believe quality service should be affordable. That's why we offer rates as low as 3%, with a special 2% rate for public workers — helping you keep more of what matters.</p></div>
       </div>
     </div>
   </section>
@@ -768,6 +926,151 @@ footer{background:var(--black);color:#fff;padding:60px 0 0;}
       <div style="text-align:center;padding:40px;color:#999;">Loading reviews...</div>
     </div>
   </div></section>
+</div>
+
+<!-- HEROES RATE PAGE -->
+<div class="page" id="page-heroes-rate">
+  <div class="page-hero" style="background:linear-gradient(135deg,#1a1a2e 0%,#8b0000 60%,var(--red) 100%);">
+    <div style="display:inline-block;background:rgba(255,255,255,.15);color:#fff;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 18px;margin-bottom:18px;border:1px solid rgba(255,255,255,.3);">Exclusive Program</div>
+    <h1>The Heroes Rate</h1>
+    <p>2% commission for those who serve our communities</p>
+  </div>
+
+  <!-- Why We Created It -->
+  <section style="padding:80px 0;background:#fff;">
+    <div class="container">
+      <div style="max-width:800px;margin:0 auto;text-align:center;">
+        <div class="section-title">Why We Created the Heroes Rate</div>
+        <p class="section-sub">A program born from lived experience — nurse to nurse, servant to servant.</p>
+        <div class="mission-rate-callout" style="margin-top:32px;">
+          <p>"As nurses, we understand sacrifice. We see it in healthcare workers, teachers, and the soldiers who protect us. <strong>That's why we created our Heroes Rate: just 2% commission for those who serve our communities.</strong> Because the people who give the most deserve to keep more of what they've earned."</p>
+        </div>
+        <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;text-align:left;">
+          <div style="padding:24px;background:var(--off-white);border:1px solid var(--mid-gray);">
+            <div style="font-size:28px;margin-bottom:8px;">🏥</div>
+            <div style="font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:8px;">We Know Healthcare</div>
+            <p style="color:var(--dark-gray);font-size:14px;margin:0;">Founded by Registered Nurses who understand the demands — and rewards — of serving others every day.</p>
+          </div>
+          <div style="padding:24px;background:var(--off-white);border:1px solid var(--mid-gray);">
+            <div style="font-size:28px;margin-bottom:8px;">💙</div>
+            <div style="font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:8px;">Giving Back Matters</div>
+            <p style="color:var(--dark-gray);font-size:14px;margin:0;">Service workers sacrifice so much. Saving thousands on your biggest financial transaction is our thank-you.</p>
+          </div>
+          <div style="padding:24px;background:var(--off-white);border:1px solid var(--mid-gray);">
+            <div style="font-size:28px;margin-bottom:8px;">🏆</div>
+            <div style="font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:8px;">No Compromises</div>
+            <p style="color:var(--dark-gray);font-size:14px;margin:0;">Same full service as every client — drone photography, staging, marketing, expert negotiation. Just a lower rate.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Rates -->
+  <section class="our-rates-section">
+    <div class="container">
+      <div style="text-align:center;">
+        <div class="section-title">Our Rates</div>
+        <p class="section-sub">We built our pricing around one idea: exceptional service should be accessible to everyone — especially those who serve.</p>
+      </div>
+      <div class="rates-compare">
+        <div class="rates-col rates-col-standard">
+          <div class="rates-col-eyebrow">Standard Sellers</div>
+          <div class="rates-col-pct">3%</div>
+          <div class="rates-col-title">Full-Service Listing</div>
+          <p class="rates-col-desc">Every seller gets the same comprehensive service: professional photography, drone aerials, MLS listing, digital marketing campaigns, open houses, and expert contract negotiation from start to close.</p>
+          <ul class="rates-list">
+            <li><span>📸</span> Professional staging consult + photography</li>
+            <li><span>🚁</span> Drone aerial photography</li>
+            <li><span>📣</span> Digital & print marketing campaigns</li>
+            <li><span>🤝</span> Expert negotiation & contract review</li>
+            <li><span>🔑</span> Full support from listing to closing</li>
+          </ul>
+        </div>
+        <div class="rates-col rates-col-heroes">
+          <div class="rates-col-eyebrow">Heroes Rate</div>
+          <div class="rates-col-pct">2%</div>
+          <div class="rates-col-title">For Those Who Serve</div>
+          <p class="rates-col-desc">Same full service. Lower rate. Our way of honoring the people who dedicate their lives to caring for others — in healthcare, education, and service to our country.</p>
+          <ul class="rates-list">
+            <li><span>🏥</span> Healthcare workers (RN, LPN, CNA, MD, PA…)</li>
+            <li><span>🎓</span> Teachers & school staff (K–12 + higher ed)</li>
+            <li><span>🎖️</span> Active military & veterans</li>
+            <li><span>🚒</span> First responders (police, fire, EMS)</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Who Qualifies -->
+      <div class="qualifies-box">
+        <div class="qualifies-box-header">
+          <span>🏆</span>
+          <h3>Do You Qualify for Our 2% Heroes Rate?</h3>
+        </div>
+        <div class="qualifies-box-body">
+          <div class="qualifies-grid">
+            <div class="qualifies-item"><div class="qualifies-item-icon">🏥</div><div class="qualifies-item-label">Healthcare Workers</div><div class="qualifies-item-sub">RNs, LPNs, CNAs, Physicians, PAs, Therapists & all medical staff</div></div>
+            <div class="qualifies-item"><div class="qualifies-item-icon">🎓</div><div class="qualifies-item-label">Educators</div><div class="qualifies-item-sub">K–12 teachers, administrators, school staff & higher education faculty</div></div>
+            <div class="qualifies-item"><div class="qualifies-item-icon">🎖️</div><div class="qualifies-item-label">Military & Veterans</div><div class="qualifies-item-sub">Active duty, National Guard, Reserves & all honorably discharged veterans</div></div>
+            <div class="qualifies-item"><div class="qualifies-item-icon">🚒</div><div class="qualifies-item-label">First Responders</div><div class="qualifies-item-sub">Police officers, firefighters, EMTs, paramedics & emergency dispatchers</div></div>
+            <div class="qualifies-item"><div class="qualifies-item-icon">🏛️</div><div class="qualifies-item-label">Public Servants</div><div class="qualifies-item-sub">Government employees, social workers & non-profit community workers</div></div>
+            <div class="qualifies-item" style="background:var(--off-white);"><div class="qualifies-item-icon">❓</div><div class="qualifies-item-label" style="color:var(--red);">Not Sure?</div><div class="qualifies-item-sub">Ask us — if you serve your community, there's a good chance you qualify.</div></div>
+          </div>
+        </div>
+        <div class="qualifies-footer">Simple verification required at time of listing. <button onclick="showPage('contact')">Contact us</button> to confirm your eligibility.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Savings Calculator -->
+  <section style="padding:80px 0;background:#fff;">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:48px;">
+        <div class="section-title">See How Much You'll Save</div>
+        <p class="section-sub">Calculate your Heroes Rate savings compared to traditional agent commissions.</p>
+      </div>
+      <div style="max-width:640px;margin:0 auto;background:var(--off-white);border:1px solid var(--mid-gray);padding:40px;">
+        <div style="margin-bottom:28px;">
+          <label style="font-weight:600;display:block;margin-bottom:8px;font-size:15px;">Your Home's Estimated Sale Price</label>
+          <div class="calc-input-wrap">
+            <span class="calc-prefix">$</span>
+            <input type="text" id="heroCalcPrice" class="has-prefix" value="350,000" oninput="fmtDollar(this);calcHeroSavings()">
+          </div>
+        </div>
+        <div id="heroCalcResult"></div>
+        <div style="margin-top:32px;text-align:center;padding-top:24px;border-top:1px solid var(--mid-gray);">
+          <p style="color:var(--dark-gray);font-size:14px;margin-bottom:16px;">Ready to claim your Heroes Rate?</p>
+          <button class="btn-primary" onclick="showPage('contact')">Verify My Eligibility</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Heroes Reviews -->
+  <section class="testimonials" style="background:var(--off-white);">
+    <div class="container">
+      <div class="section-title" style="text-align:center;">Heroes Rate Success Stories</div>
+      <p class="section-sub" style="text-align:center;margin-bottom:40px;">Real savings. Real service. From people who served — and kept more of what they earned.</p>
+      <div class="testimonials-grid" id="heroesReviews">
+        <div style="text-align:center;padding:60px;color:#999;grid-column:1/-1;">Loading reviews...</div>
+      </div>
+      <div style="text-align:center;margin-top:40px;">
+        <button class="btn-outline" onclick="showPage('reviews')">See All Client Reviews</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section style="padding:80px 0;background:var(--red);color:#fff;text-align:center;">
+    <div class="container">
+      <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.7;margin-bottom:16px;">Healthcare · Education · Military · First Responders</div>
+      <h2 style="font-family:var(--font-display);font-size:40px;font-weight:700;margin-bottom:16px;color:#fff;line-height:1.2;">You Gave Everything.<br>Keep More of What You Earned.</h2>
+      <p style="font-size:17px;opacity:.85;margin-bottom:36px;max-width:560px;margin-left:auto;margin-right:auto;">Contact us to verify your eligibility and get a free home evaluation. No commitment required.</p>
+      <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
+        <button class="btn-primary" style="background:#fff;color:var(--red);border-color:#fff;" onclick="showPage('sell')">Get a Free Home Evaluation</button>
+        <button class="btn-outline-white" onclick="showPage('contact')">Contact Us</button>
+      </div>
+    </div>
+  </section>
 </div>
 
 <!-- MARKET SNAPSHOT PAGE -->
@@ -980,6 +1283,45 @@ footer{background:var(--black);color:#fff;padding:60px 0 0;}
   </div></section>
 </div>
 
+<!-- AGENT PROFILE PAGE -->
+<div class="page" id="page-agent">
+  <div class="page-hero">
+    <h1 id="agentProfileName"></h1>
+    <p id="agentProfileTitleLabel"></p>
+  </div>
+  <section style="padding:60px 0;">
+    <div class="container">
+      <div style="margin-bottom:28px;">
+        <button onclick="showPage('about')" style="background:none;border:none;color:var(--red);font-size:14px;font-weight:600;cursor:pointer;padding:0;display:flex;align-items:center;gap:6px;">← Back to Meet the Team</button>
+      </div>
+      <div class="agent-profile-grid">
+        <div class="agent-profile-sidebar">
+          <div class="agent-profile-photo" id="agentProfilePhotoWrap"></div>
+          <div class="agent-profile-meta">
+            <div class="agent-name" id="agentProfileMetaName"></div>
+            <div class="agent-title-label" id="agentProfileMetaTitle"></div>
+            <div id="agentProfileContactItems"></div>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-display);font-size:28px;font-weight:700;margin-bottom:20px;" id="agentProfileAboutTitle">About</h2>
+          <div class="agent-profile-bio" id="agentProfileBio"></div>
+          <div class="agent-profile-form">
+            <h3>Get In Touch with <span id="agentProfileFormName"></span></h3>
+            <div class="contact-form" style="display:flex;flex-direction:column;gap:16px;margin-top:4px;">
+              <div class="form-group"><label>Your Name</label><input type="text" placeholder="Full name"></div>
+              <div class="form-group"><label>Email</label><input type="email" placeholder="you@email.com"></div>
+              <div class="form-group"><label>Phone</label><input type="tel" placeholder="(317) 555-0000"></div>
+              <div class="form-group"><label>Message</label><textarea rows="4" placeholder="I'm interested in..."></textarea></div>
+              <button class="btn-primary" style="width:100%;padding:14px;">Send Message</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="container">
@@ -1023,6 +1365,59 @@ function showPage(page) {
   window.scrollTo(0, 0);
   if (page === 'about') loadAgents();
   if (page === 'reviews') loadReviews();
+  if (page === 'heroes-rate') { loadHeroesReviews(); calcHeroSavings(); }
+}
+
+async function loadHeroesReviews() {
+  const grid = document.getElementById('heroesReviews');
+  if (!grid) return;
+  const { data } = await sb.from('testimonials').select('*').eq('active', true).eq('hero_client', true).order('created_at', {ascending: false});
+  if (!data || !data.length) {
+    grid.innerHTML = '<div style="text-align:center;padding:60px;color:#999;grid-column:1/-1;">No Heroes Rate reviews yet — check back soon!</div>';
+    return;
+  }
+  grid.innerHTML = data.map(t => `
+    <div class="testimonial-card">
+      <div class="test-stars">${'★'.repeat(t.rating || 5)}</div>
+      <p class="test-text">${t.content}</p>
+      <div class="test-author">— ${t.author_name}</div>
+    </div>
+  `).join('');
+}
+
+function calcHeroSavings() {
+  const el = document.getElementById('heroCalcPrice');
+  if (!el) return;
+  const raw = el.value.replace(/[^0-9.]/g, '');
+  const price = parseFloat(raw) || 0;
+  const result = document.getElementById('heroCalcResult');
+  if (!result) return;
+  if (!price) { result.innerHTML = ''; return; }
+  const heroFee = price * 0.02;
+  const stdFee = price * 0.03;
+  const tradFee = price * 0.03;
+  const savings = tradFee - heroFee;
+  const fmt = v => '$' + Math.round(v).toLocaleString();
+  result.innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;">
+      <div style="text-align:center;padding:16px;background:#f5f5f5;border:1px solid var(--mid-gray);">
+        <div style="font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#999;margin-bottom:4px;">Traditional 3%</div>
+        <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#aaa;">${fmt(tradFee)}</div>
+      </div>
+      <div style="text-align:center;padding:16px;background:#f5f5f5;border:1px solid var(--mid-gray);">
+        <div style="font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#999;margin-bottom:4px;">Our Standard 3%</div>
+        <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--dark-gray);">${fmt(stdFee)}</div>
+      </div>
+      <div style="text-align:center;padding:16px;background:var(--red);border:1px solid var(--red);">
+        <div style="font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.8);margin-bottom:4px;">Heroes Rate 2%</div>
+        <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;">${fmt(heroFee)}</div>
+      </div>
+    </div>
+    <div style="background:var(--red);color:#fff;padding:18px;text-align:center;">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;opacity:.85;margin-bottom:4px;">You save vs. traditional 3% commission</div>
+      <div style="font-family:var(--font-display);font-size:34px;font-weight:700;">${fmt(savings)}</div>
+    </div>
+  `;
 }
 
 // NAV
@@ -1103,28 +1498,114 @@ function switchAdminTab(tab) {
   });
 }
 
+// SOCIAL ICONS HELPER
+function socialLinks(a, stopProp) {
+  const sp = stopProp ? ' onclick="event.stopPropagation()"' : '';
+  const icons = [];
+  if (a.instagram_url) icons.push(`<a href="${a.instagram_url}" target="_blank" rel="noopener"${sp} title="Instagram" class="social-icon-link" style="color:var(--dark-gray);" onmouseover="this.style.color='#E1306C'" onmouseout="this.style.color='var(--dark-gray)'"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="3"/></svg></a>`);
+  if (a.facebook_url) icons.push(`<a href="${a.facebook_url}" target="_blank" rel="noopener"${sp} title="Facebook" class="social-icon-link" style="color:var(--dark-gray);" onmouseover="this.style.color='#1877F2'" onmouseout="this.style.color='var(--dark-gray)'"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>`);
+  if (a.linkedin_url) icons.push(`<a href="${a.linkedin_url}" target="_blank" rel="noopener"${sp} title="LinkedIn" class="social-icon-link" style="color:var(--dark-gray);" onmouseover="this.style.color='#0A66C2'" onmouseout="this.style.color='var(--dark-gray)'"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v2a6 6 0 0 1 4-3z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>`);
+  return icons.join('');
+}
+
 // LOAD AGENTS (public page)
 async function loadAgents() {
   const grid = document.getElementById('agentsGrid');
   const { data } = await sb.from('agents').select('*').eq('active', true).order('display_order');
   if (!data || !data.length) { grid.innerHTML = '<div style="text-align:center;padding:60px;color:#999;grid-column:1/-1;">No agents found.</div>'; return; }
   grid.innerHTML = data.map(a => `
-    <div class="agent-card">
+    <div class="agent-card" onclick="showAgentProfile('${a.id}')" style="cursor:pointer;">
       <div class="agent-photo">
         ${a.photo_url ? `<img src="${a.photo_url}" alt="${a.name}">` : `<div class="agent-photo-placeholder"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="22" r="14" stroke="#ccc" stroke-width="2" fill="none"/><path d="M6 54c0-13.3 10.7-24 24-24s24 10.7 24 24" stroke="#ccc" stroke-width="2" fill="none"/></svg></div>`}
       </div>
       <div class="agent-info">
         <div class="agent-name">${a.name}</div>
         <div class="agent-title">${a.title || 'Agent'}</div>
-        ${a.bio ? `<div class="agent-bio">${a.bio}</div>` : ''}
         <div class="agent-contact">
-          ${a.phone ? `<a href="tel:${a.phone}">📞 ${a.phone}</a>` : ''}
-          ${a.email ? `<a href="mailto:${a.email}">✉ ${a.email}</a>` : ''}
+          ${a.phone ? `<a href="tel:${a.phone}" onclick="event.stopPropagation()">📞 ${a.phone}</a>` : ''}
+          ${a.email ? `<a href="mailto:${a.email}" onclick="event.stopPropagation()">✉ ${a.email}</a>` : ''}
           ${a.specialty ? `<span style="font-size:13px;color:var(--red);">✦ ${a.specialty}</span>` : ''}
           ${a.license_number ? `<span style="font-size:12px;color:#aaa;">License: ${a.license_number}</span>` : ''}
         </div>
+        <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--mid-gray);display:flex;align-items:center;justify-content:space-between;">
+          <div style="display:flex;gap:12px;align-items:center;">${socialLinks(a, true)}</div>
+          <span style="font-size:13px;font-weight:600;color:var(--red);letter-spacing:.3px;">View Profile →</span>
+        </div>
       </div>
     </div>`).join('');
+}
+
+// AGENT PROFILE PAGE
+async function showAgentProfile(id) {
+  const { data: a } = await sb.from('agents').select('*').eq('id', id).single();
+  if (!a) return;
+  const firstName = a.name.split(' ')[0];
+  document.getElementById('agentProfileName').textContent = a.name;
+  document.getElementById('agentProfileTitleLabel').textContent = a.title || 'Agent';
+  document.getElementById('agentProfileMetaName').textContent = a.name;
+  document.getElementById('agentProfileMetaTitle').textContent = a.title || 'Agent';
+  document.getElementById('agentProfileAboutTitle').textContent = 'About ' + firstName;
+  document.getElementById('agentProfileFormName').textContent = firstName;
+  document.getElementById('agentProfileBio').textContent = a.bio || 'Bio coming soon.';
+
+  const photoWrap = document.getElementById('agentProfilePhotoWrap');
+  if (a.photo_url) {
+    photoWrap.innerHTML = `<img src="${a.photo_url}" alt="${a.name}">`;
+  } else {
+    photoWrap.innerHTML = `<div style="width:100%;aspect-ratio:1/1;background:linear-gradient(135deg,var(--red) 0%,var(--red-dark) 100%);display:flex;align-items:center;justify-content:center;"><svg width="80" height="80" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="28" r="20" stroke="rgba(255,255,255,.5)" stroke-width="2" fill="none"/><path d="M8 76c0-17.7 14.3-32 32-32s32 14.3 32 32" stroke="rgba(255,255,255,.5)" stroke-width="2" fill="none"/></svg></div>`;
+  }
+
+  const items = [];
+  if (a.phone) items.push(`<div class="agent-profile-contact-item"><span class="agent-profile-contact-icon">📞</span><a href="tel:${a.phone}">${a.phone}</a></div>`);
+  if (a.email) items.push(`<div class="agent-profile-contact-item"><span class="agent-profile-contact-icon">✉</span><a href="mailto:${a.email}">${a.email}</a></div>`);
+  if (a.specialty) items.push(`<div class="agent-profile-contact-item"><span class="agent-profile-contact-icon">✦</span><span>${a.specialty}</span></div>`);
+  if (a.license_number) items.push(`<div class="agent-profile-contact-item"><span class="agent-profile-contact-icon">🪪</span><span>License #${a.license_number}</span></div>`);
+  const socials = socialLinks(a, false);
+  if (socials) items.push(`<div class="agent-profile-contact-item" style="border-top:1px solid var(--mid-gray);padding-top:16px;margin-top:4px;border-bottom:none;"><div style="display:flex;gap:16px;align-items:center;">${socials}</div></div>`);
+  document.getElementById('agentProfileContactItems').innerHTML = items.join('');
+
+  showPage('agent');
+}
+
+// PHOTO UPLOAD & PREVIEW
+function previewPhotoUrl(url) {
+  const img = document.getElementById('aPhotoPreviewImg');
+  const placeholder = document.getElementById('aPhotoPreviewPlaceholder');
+  if (url) {
+    img.src = url;
+    img.style.display = 'block';
+    placeholder.style.display = 'none';
+  } else {
+    img.style.display = 'none';
+    img.src = '';
+    placeholder.style.display = 'block';
+  }
+}
+
+async function handlePhotoUpload(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const status = document.getElementById('aPhotoUploadStatus');
+  status.textContent = 'Uploading…';
+  status.style.color = 'var(--dark-gray)';
+
+  // Show local preview immediately
+  const localUrl = URL.createObjectURL(file);
+  previewPhotoUrl(localUrl);
+
+  const ext = file.name.split('.').pop().toLowerCase();
+  const filename = `agent-${Date.now()}.${ext}`;
+  const { error } = await sb.storage.from('agent-photos').upload(filename, file, { upsert: true });
+  if (error) {
+    status.textContent = 'Upload failed: ' + error.message;
+    status.style.color = 'var(--red)';
+    return;
+  }
+  const { data: urlData } = sb.storage.from('agent-photos').getPublicUrl(filename);
+  document.getElementById('aPhoto').value = urlData.publicUrl;
+  previewPhotoUrl(urlData.publicUrl);
+  status.textContent = '✓ Uploaded';
+  status.style.color = '#16a34a';
 }
 
 // ADMIN AGENT TABLE
@@ -1132,11 +1613,11 @@ async function loadAdminAgentTable() {
   const wrap = document.getElementById('agentTableWrap');
   const { data } = await sb.from('agents').select('*').order('display_order');
   if (!data || !data.length) { wrap.innerHTML = '<p style="color:#999;padding:16px;">No agents yet.</p>'; return; }
-  wrap.innerHTML = `<table class="admin-table"><thead><tr><th>Name</th><th>Title</th><th>Phone</th><th>Email</th><th>Specialty</th><th>Action</th></tr></thead><tbody>${data.map(a => `<tr><td><strong>${a.name}</strong></td><td>${a.title||''}</td><td>${a.phone||''}</td><td>${a.email||''}</td><td>${a.specialty||''}</td><td><button class="del-btn" onclick="editAgent('${a.id}','${escQ(a.name)}','${escQ(a.title)}','${escQ(a.phone)}','${escQ(a.email)}','${escQ(a.bio)}','${escQ(a.license_number)}','${escQ(a.specialty)}','${escQ(a.photo_url)}')">Edit</button> <button class="del-btn" onclick="deleteAgent('${a.id}')">Delete</button></td></tr>`).join('')}</tbody></table>`;
+  wrap.innerHTML = `<table class="admin-table"><thead><tr><th>Name</th><th>Title</th><th>Phone</th><th>Email</th><th>Specialty</th><th>Action</th></tr></thead><tbody>${data.map(a => `<tr><td><strong>${a.name}</strong></td><td>${a.title||''}</td><td>${a.phone||''}</td><td>${a.email||''}</td><td>${a.specialty||''}</td><td><button class="del-btn" onclick="editAgent('${a.id}','${escQ(a.name)}','${escQ(a.title)}','${escQ(a.phone)}','${escQ(a.email)}','${escQ(a.bio)}','${escQ(a.license_number)}','${escQ(a.specialty)}','${escQ(a.photo_url)}','${escQ(a.instagram_url)}','${escQ(a.facebook_url)}','${escQ(a.linkedin_url)}')">Edit</button> <button class="del-btn" onclick="deleteAgent('${a.id}')">Delete</button></td></tr>`).join('')}</tbody></table>`;
 }
 function escQ(s){ return (s||'').replace(/'/g,"\\'"); }
 
-function editAgent(id,name,title,phone,email,bio,license,specialty,photo) {
+function editAgent(id,name,title,phone,email,bio,license,specialty,photo,instagram,facebook,linkedin) {
   document.getElementById('editAgentId').value = id;
   document.getElementById('aName').value = name;
   document.getElementById('aTitle').value = title;
@@ -1146,6 +1627,10 @@ function editAgent(id,name,title,phone,email,bio,license,specialty,photo) {
   document.getElementById('aLicense').value = license;
   document.getElementById('aSpecialty').value = specialty;
   document.getElementById('aPhoto').value = photo;
+  document.getElementById('aInstagram').value = instagram || '';
+  document.getElementById('aFacebook').value = facebook || '';
+  document.getElementById('aLinkedIn').value = linkedin || '';
+  previewPhotoUrl(photo);
   document.getElementById('agentFormTitle').textContent = 'Edit Agent';
   window.scrollTo(0, document.getElementById('adminPanel').offsetTop);
 }
@@ -1163,7 +1648,10 @@ async function saveAgent() {
     p_bio: document.getElementById('aBio').value,
     p_license_number: document.getElementById('aLicense').value,
     p_specialty: document.getElementById('aSpecialty').value,
-    p_photo_url: document.getElementById('aPhoto').value
+    p_photo_url: document.getElementById('aPhoto').value,
+    p_instagram_url: document.getElementById('aInstagram').value || null,
+    p_facebook_url: document.getElementById('aFacebook').value || null,
+    p_linkedin_url: document.getElementById('aLinkedIn').value || null
   });
   if (error) { alert('Error: ' + error.message); return; }
   const s = document.getElementById('adminSuccess');
@@ -1182,7 +1670,10 @@ async function deleteAgent(id) {
 }
 
 function clearAgentForm() {
-  ['aName','aTitle','aPhone','aEmail','aBio','aLicense','aSpecialty','aPhoto','editAgentId'].forEach(id => document.getElementById(id).value = '');
+  ['aName','aTitle','aPhone','aEmail','aBio','aLicense','aSpecialty','aPhoto','aInstagram','aFacebook','aLinkedIn','editAgentId'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('aPhotoFile').value = '';
+  document.getElementById('aPhotoUploadStatus').textContent = '';
+  previewPhotoUrl('');
   document.getElementById('agentFormTitle').textContent = 'Add New Agent';
 }
 
@@ -1205,12 +1696,16 @@ async function saveTestimonial() {
   const name = document.getElementById('tName').value.trim();
   const content = document.getElementById('tContent').value.trim();
   if (!name || !content) { alert('Name and review are required.'); return; }
+  const heroClient = document.getElementById('tHeroClient').checked;
   const { error } = await sb.rpc('admin_insert_testimonial', {
     p_author_name: name, p_content: content,
-    p_rating: parseInt(document.getElementById('tRating').value) || 5
+    p_rating: parseInt(document.getElementById('tRating').value) || 5,
+    p_hero_client: heroClient
   });
   if (error) { alert('Error: ' + error.message); return; }
-  document.getElementById('tName').value = ''; document.getElementById('tContent').value = '';
+  document.getElementById('tName').value = '';
+  document.getElementById('tContent').value = '';
+  document.getElementById('tHeroClient').checked = false;
   loadTestimonialTable();
 }
 
